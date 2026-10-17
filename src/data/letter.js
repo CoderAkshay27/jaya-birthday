@@ -1,0 +1,20 @@
+export const letter = {
+  greeting: 'My Jaya, My Snowgirl ❤️🌙',
+  paragraphs: [
+    'Happy Birthday, my love. 🎂💗',
+    "If I could give you one thing in this world, I would give you the ability to see yourself through my eyes, even for just a moment. Maybe then you would understand how incredibly special you are to me, how beautiful your smile is, and how someone can become such an important part of another person's world without even realizing it.",
+    "Sometimes, I wonder how a person can bring so much happiness into someone else's life just by being themselves. And then I think of you. Your smile, your little habits, your kindness, your cute moments, and all those tiny things that might seem ordinary to you but mean so much to me. Somehow, you make ordinary days feel special, and memories with you become the moments I wish I could keep forever. ❤️",
+    "Jaya, I love the way you are. Not just the beautiful parts that everyone can see, but also the little things that make you *you*. I love the way you make me smile without even trying. I love the comfort of knowing you're there. I love how even the smallest moment with you can become something worth remembering.",
+    "From the unexpected beginning of our story to all the memories we've made along the way, I'm grateful that our paths crossed. We have our own little world, our own memories, our own silly moments, and a story that is still being written. And if there's one thing I hope for, it's that we keep adding beautiful chapters to it, one day at a time. 🫶🏻",
+    'On your birthday, I wish you more than just happiness for today. I wish you a life full of reasons to smile, dreams that come true, courage when things get difficult, peace when your heart feels heavy, and people who remind you how precious you are. I hope you never stop believing in yourself, because you deserve so many beautiful things.',
+    "And whenever life gets a little difficult, I hope you remember that you don't have to be perfect to be loved. You can have bad days, feel tired, make mistakes, or simply not feel okay. You deserve love on those days just as much as you do on your happiest ones.",
+    "I can't promise that every day will be perfect, but I hope I can keep making you smile, listening to you, supporting your dreams, sharing little moments with you, and showing you in the simplest ways how much you mean to me.",
+    '**If I could make one birthday wish for myself, it would be to see you happy—not just today, but on all the ordinary days that come after it.** Because your happiness matters to me, and your smile will always be one of my favourite sights in this world. 💞',
+    "So, my Jaya, keep smiling that beautiful smile, keep being your wonderful self, and keep shining in your own way. The world is lucky to have you, and I'm genuinely grateful to have you in my life.",
+    'Happy Birthday once again, my favourite person. 🎂✨',
+    "Here's to more laughter, more memories, more little adventures, more silly conversations, and countless moments that we will look back on and smile about.",
+    '**You are my favourite chapter, my sweetest thought, and a beautiful part of my world.**',
+  ],
+  closing: 'With all my love, today and always,',
+  signature: 'Yours, Akshay ❤️🧸',
+};

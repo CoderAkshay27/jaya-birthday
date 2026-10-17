@@ -1,0 +1,49 @@
+/* All effects are scoped to the existing gallery and its lightbox. */
+.cinematic-gallery{position:relative;isolation:isolate;overflow:clip;overflow-clip-margin:36px}
+.gallery-atmosphere{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden;contain:paint;mask-image:linear-gradient(transparent,#000 16%,#000 84%,transparent)}
+.gallery-blush{position:absolute;inset:0;background:radial-gradient(ellipse at 22% 50%,#d88fbc16,transparent 55%),radial-gradient(ellipse at 78% 55%,#b396ee17,transparent 55%),linear-gradient(transparent,#210d3226,transparent)}
+.gallery-starfield{position:absolute;inset:0;pointer-events:none}.gallery-star{position:absolute;width:3px;height:3px;border-radius:50%;background:#ffe1f1;box-shadow:0 0 8px #f7c8ec8a;opacity:.4;animation:gallery-twinkle 5s ease-in-out var(--delay) infinite}
+.gallery-star:nth-child(3n){width:2px;height:2px;background:#dac8ff}
+.gallery-rain-heart{position:absolute;top:-24px;font-size:11px;color:#efafd13b;animation:gallery-heartfall var(--duration) linear var(--delay) infinite}
+.gallery-rain-heart:nth-child(3n){color:#c8b4f63d;font-size:9px}.gallery-rain-heart:nth-child(2n){color:#fff0fa2c}
+.gallery-atmosphere[data-active="false"] *{animation-play-state:paused!important}
+.cinematic-gallery .memory-card{position:relative;touch-action:manipulation;outline-offset:8px}
+.cinematic-gallery .gallery .memory-image img{transition:filter .7s ease,transform .7s cubic-bezier(.22,1,.36,1);filter:drop-shadow(0 9px 18px #e496cb24) drop-shadow(0 0 5px #b79be01a)}
+.cinematic-gallery .memory-2[data-visible="true"] .memory-image img{animation:moment-glow 2s ease-out 1.05s both}
+.cinematic-gallery .gallery .memory-card:hover img,.cinematic-gallery .gallery .memory-card:focus-visible img{transform:scale(1.025);filter:drop-shadow(0 10px 23px #efa8d357) drop-shadow(0 0 15px #b49dea45)}
+.cinematic-gallery .gallery .memory-card:active img{transform:scale(1.01);filter:drop-shadow(0 0 19px #efafd36b)}
+.cinematic-gallery .memory-caption{transition:color .5s ease,transform .5s ease,text-shadow .5s ease}
+.cinematic-gallery .memory-card:hover .memory-caption,.cinematic-gallery .memory-card:focus-visible .memory-caption{transform:translateY(-3px);color:#ffe3f2;text-shadow:0 0 16px #efa9d545}
+.moment-sparkles{position:absolute;inset:0;pointer-events:none;z-index:-1}.moment-sparkles i{position:absolute;width:7px;height:7px;background:#f9d9ee;clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%);opacity:0;animation:moment-sparkle 8s ease-in-out infinite;left:8%;top:25%}.moment-sparkles i:nth-child(2){left:auto;right:9%;top:58%;animation-delay:2.6s;background:#dfceff;width:5px;height:5px}.moment-sparkles i:nth-child(3){left:20%;top:82%;animation-delay:5.2s;width:4px;height:4px}.memory-1 .moment-sparkles{transform:scaleX(-1)}.memory-3 .moment-sparkles{transform:translateY(10px)}
+.cinematic-gallery[data-active="false"] .moment-sparkles i,.cinematic-moment[data-visible="false"] .moment-sparkles i{animation-play-state:paused}
+.cinematic-lightbox{animation:gallery-dialog-in .45s cubic-bezier(.22,1,.36,1);background:radial-gradient(ellipse at 50% 25%,#54304d,#24142ff5);border-color:#d5aed64a;box-shadow:0 20px 90px #09051280,0 0 50px #d09ad013}
+.cinematic-lightbox .lightbox-image{position:relative;isolation:isolate;overflow:visible;touch-action:pan-y pinch-zoom}
+.lightbox-photo-stage{height:100%;width:100%;display:flex;align-items:center;justify-content:center;min-width:0;position:relative;z-index:1}
+.cinematic-lightbox .lightbox-photo-stage img{display:block;width:auto;height:auto;max-height:100%;max-width:100%;object-fit:contain;filter:drop-shadow(0 0 18px #d9a7d528)}
+.lightbox-photo-stage .photo-fallback{height:100%;width:100%}
+.lightbox-magic{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}.lightbox-magic span{position:absolute;font-size:14px;color:#efbadc;opacity:0;animation:lightbox-heartburst 1.5s cubic-bezier(.15,.6,.3,1) var(--delay) both}.lightbox-magic span:nth-child(3n){color:#ddc4ff;font-size:12px}
+.cinematic-lightbox .lightbox-controls{position:relative;z-index:2;min-height:100px;align-items:center}.cinematic-lightbox .lightbox-caption{flex:1;min-width:0}.cinematic-lightbox .icon-button{min-width:44px;min-height:44px;touch-action:manipulation}.cinematic-lightbox .lightbox-caption p{overflow-wrap:anywhere}
+@keyframes gallery-twinkle{0%,100%{opacity:.18;transform:scale(.8)}50%{opacity:.6;transform:scale(1.15)}}
+@keyframes gallery-heartfall{from{transform:translate3d(0,0,0) rotate(-12deg);opacity:0}12%{opacity:.6}85%{opacity:.4}to{transform:translate3d(24px,900px,0) rotate(25deg);opacity:0}}
+@keyframes moment-sparkle{0%,65%,100%{opacity:0;transform:scale(.5) rotate(0)}75%{opacity:.65;transform:scale(1.2) rotate(35deg)}87%{opacity:0;transform:scale(.7) rotate(70deg)}}
+@keyframes moment-glow{from{filter:drop-shadow(0 0 25px #d2a1ee70)}to{filter:drop-shadow(0 9px 18px #e496cb24) drop-shadow(0 0 5px #b79be01a)}}
+@keyframes gallery-dialog-in{from{opacity:0;transform:translateY(10px) scale(.955)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes lightbox-heartburst{0%{opacity:0;transform:translate(0,10px) scale(.4)}20%{opacity:.7}100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(1.1) rotate(18deg)}}
+@media(hover:none){.cinematic-gallery .gallery .memory-card:hover img{transform:none;filter:drop-shadow(0 9px 18px #e496cb24)}.cinematic-gallery .memory-card:hover .memory-caption{transform:none;text-shadow:none}.moment-sparkles i:nth-child(3){display:none}}
+@media(max-width:699px){.cinematic-gallery{overflow-clip-margin:16px}.cinematic-lightbox .lightbox-caption p{font-size:21px}.cinematic-lightbox .lightbox-controls{gap:8px;min-height:110px}.gallery-star:nth-child(n+10){display:none}.gallery-rain-heart:nth-child(n+6){display:none}}
+@media(prefers-reduced-motion:reduce){.gallery-rain-heart,.moment-sparkles,.lightbox-magic{display:none}.gallery-star{animation:none;opacity:.3}.cinematic-lightbox{animation:none}.cinematic-gallery .memory-2[data-visible="true"] .memory-image img{animation:none}.cinematic-gallery .gallery .memory-card:hover img,.cinematic-gallery .gallery .memory-card:focus-visible img,.cinematic-gallery .memory-card:hover .memory-caption,.cinematic-gallery .memory-card:focus-visible .memory-caption{transform:none}}
+.cinematic-gallery .cinematic-moment{isolation:isolate}.cinematic-gallery .memory-image>img{position:relative;z-index:1}.cinematic-gallery .moment-sparkles{z-index:0}
+/* Visible chapter changes with gentle crossfades, never hard section edges. */
+.chapter-atmosphere{transition:background-color 1.5s cubic-bezier(.22,1,.36,1)}
+.chapter-atmosphere .atmosphere-light{transition:opacity 1.5s cubic-bezier(.22,1,.36,1)}
+@media(max-width:699px){.sky-decoration .star:nth-child(n+45){display:none}.gallery-star:nth-child(n+10):nth-child(-n+12){display:block}}
+@media(prefers-reduced-motion:reduce){.chapter-atmosphere,.chapter-atmosphere .atmosphere-light{transition:none}}
+/* A gently floating initial; the link itself stays still for easy tapping. */
+header .brand>span,.fallback-monogram{font-family:Georgia,'Times New Roman',serif;font-style:italic;font-weight:700}
+header .brand>span{display:inline-block;font-size:39px;line-height:1;transform-origin:50% 75%;animation:j-monogram-float 5.5s ease-in-out infinite;text-shadow:0 0 15px #f3b9d72e}
+.sky-decoration .floating-heart{color:#edb0d04a;font-size:16px}
+.sky-decoration .floating-heart:nth-of-type(3n){color:#cbb5ee48;font-size:12px}
+.sky-decoration .floating-heart:nth-of-type(4n){color:#fff0fa40;font-size:14px}
+@keyframes j-monogram-float{0%,100%{transform:translateY(0) rotate(-5deg)}50%{transform:translateY(-4px) rotate(5deg)}}
+@media(max-width:699px){header .brand>span{font-size:35px}.sky-decoration .floating-heart:nth-of-type(n+11){display:none}}
+@media(prefers-reduced-motion:reduce){header .brand>span{animation:none;transform:none}}

@@ -1,0 +1,5 @@
+import { Heart,Flower2,Star,Sparkles,Sun,Moon,ArrowUpRight } from 'lucide-react';
+import { qualities } from '../data/qualities';
+import Reveal from './Reveal';
+const icons={heart:Heart,flower:Flower2,star:Star,sparkles:Sparkles,sun:Sun,moon:Moon};
+export default function QualitiesSection({onLetter}){return <section className="section qualities" id="you"><Reveal className="section-heading"><h2>What I Like <em>About You, Jaya</em> ❤️</h2><p>If I had to explain why you're so special to me,<br/> I don't think words would ever be enough.</p></Reveal><div className="qualities-grid personal-qualities">{qualities.map(([title,body,icon],i)=>{const Icon=icons[icon]||Heart;return <Reveal key={title} delay={(i%4)*.07} className="quality"><div className="quality-top"><Icon size={25} strokeWidth={1.2}/><span>0{i+1}</span></div><h3>{title}</h3><p>{body}</p></Reveal>})}</div><Reveal className="letter-teaser"><span className="tiny-star">✧</span><p>There's something more I want to tell you...</p><button className="primary-button" onClick={onLetter}>Open my heart 💌 <ArrowUpRight size={17}/></button><small>A little letter, written just for you.</small></Reveal></section>}

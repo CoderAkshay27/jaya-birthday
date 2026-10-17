@@ -1,0 +1,12 @@
+import { useCallback,useEffect,useRef,useState } from 'react';
+import { Heart,Sparkles,ArrowDown } from 'lucide-react';
+import { MotionConfig } from 'motion/react';
+import Atmosphere from './components/Atmosphere';
+import BirthdayHero from './components/BirthdayHero';
+import MemoriesGallery from './components/MemoriesGallery';
+import QualitiesSection from './components/QualitiesSection';
+import LoveLetter from './components/LoveLetter';
+import Fireworks from './components/Fireworks';
+import FloatingHearts from './components/FloatingHearts';
+import MusicToggle from './components/MusicToggle';
+export default function App(){const [letter,setLetter]=useState(false),[celebration,setCelebration]=useState(0),[wish,setWish]=useState(false);const timer=useRef();const close=useCallback(()=>setLetter(false),[]);const celebrate=useCallback(()=>{setCelebration(n=>n+1);setWish(true);clearTimeout(timer.current);timer.current=setTimeout(()=>setWish(false),5000);},[]);useEffect(()=>()=>clearTimeout(timer.current),[]);return <MotionConfig reducedMotion="user"><a className="skip-link" href="#main">Skip to birthday surprise</a><Atmosphere/><FloatingHearts/><Fireworks celebration={celebration}/><div className="site-content"><header><a href="#home" className="brand" aria-label="For Jaya, home"><span>J</span></a><span className="birthday-dedication">FOR THE BIRTHDAY GIRL</span><nav aria-label="Main navigation"><a href="#memories">Gallery <ArrowDown size={17}/></a></nav></header><main id="main"><BirthdayHero onLetter={()=>setLetter(true)}/><MemoriesGallery/><QualitiesSection onLetter={()=>setLetter(true)}/><div className="celebration-section" id="celebrate"><div className="wish-stars" aria-hidden="true">✦　♥　✦　♥　✦</div><span className="eyebrow">MAKE A WISH, MY LOVE</span><h2>May this year<br/>love you back<br/><em>as much as I do.</em></h2><p className="closing-message">Thank you for being exactly who you are. The world is softer, brighter,<br className="desktop-break"/> and infinitely more beautiful with you in it.</p><p className="closing-signature">Forever yours, Akshay.</p><button className="outline-button" onClick={celebrate}>Celebrate Jaya 🎆</button></div></main><footer><span>Made with love, just for Jaya.</span><span>Always, Akshay <Heart size={12}/></span></footer></div><div className={`wish-toast ${wish?'visible':''}`} role="status">{wish?'Make a wish, Jaya ✨':''}</div><MusicToggle/>{letter&&<LoveLetter onClose={close} onCelebrate={celebrate}/>}</MotionConfig>}
