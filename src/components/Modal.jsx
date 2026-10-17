@@ -3,8 +3,10 @@ import { createPortal } from 'react-dom';
 import { X } from 'lucide-react';
 export default function Modal({children,onClose,label,className=''}) {
  const ref=useRef(null);
- useEffect(()=>{const previous=document.activeElement; const overflow=document.body.style.overflow; document.body.style.overflow='hidden'; ref.current.focus();
- const handle=e=>{if(e.key==='Escape'){e.preventDefault();onClose();} if(e.key==='Tab'){const items=[...ref.current.querySelectorAll('button,a[href],[tabindex="0"]')].filter(el=>!el.disabled); const first=items[0], last=items.at(-1); if(e.shiftKey&&(document.activeElement===first||document.activeElement===ref.current)){e.preventDefault();last?.focus();}else if(!e.shiftKey&&(document.activeElement===last||document.activeElement===ref.current)){e.preventDefault();first?.focus();}}};
- document.addEventListener('keydown',handle);return()=>{document.body.style.overflow=overflow;document.removeEventListener('keydown',handle);previous?.focus();};},[onClose]);
+ const closeRef=useRef(onClose);
+ useEffect(()=>{closeRef.current=onClose;},[onClose]);
+ useEffect(()=>{const previous=document.activeElement; const body=document.body; const scrollY=window.scrollY; const saved={overflow:body.style.overflow,position:body.style.position,top:body.style.top,width:body.style.width}; body.style.overflow='hidden'; body.style.position='fixed'; body.style.top=`-${scrollY}px`; body.style.width='100%'; ref.current.focus({preventScroll:true});
+ const handle=e=>{if(e.key==='Escape'){e.preventDefault();closeRef.current();} if(e.key==='Tab'){const items=[...ref.current.querySelectorAll('button,a[href],[tabindex="0"]')].filter(el=>!el.disabled); const first=items[0], last=items.at(-1); if(e.shiftKey&&(document.activeElement===first||document.activeElement===ref.current)){e.preventDefault();last?.focus();}else if(!e.shiftKey&&(document.activeElement===last||document.activeElement===ref.current)){e.preventDefault();first?.focus();}}};
+ document.addEventListener('keydown',handle);return()=>{Object.assign(body.style,saved); const root=document.documentElement; const behavior=root.style.scrollBehavior; root.style.scrollBehavior='auto'; window.scrollTo(0,scrollY); root.style.scrollBehavior=behavior; document.removeEventListener('keydown',handle);previous?.focus({preventScroll:true});};},[]);
  return createPortal(<div className="modal-backdrop" onClick={e=>{if(e.target===e.currentTarget)onClose();}}><div className={`modal ${className}`} ref={ref} tabIndex={-1} role="dialog" aria-modal="true" aria-label={label}><button className="icon-button modal-close" onClick={onClose} aria-label="Close dialog"><X/></button>{children}</div></div>,document.body);
 }

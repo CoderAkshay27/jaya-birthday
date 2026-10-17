@@ -10,4 +10,5 @@ import './styles/global.css';
 import './styles/theme.css';
 import './styles/reference.css';
 import './styles/gallery-effects.css';
+import './styles/responsive.css';
 createRoot(document.getElementById('root')).render(<React.StrictMode><App/></React.StrictMode>);
